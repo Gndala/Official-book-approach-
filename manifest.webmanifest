@@ -1,0 +1,19 @@
+{
+  "name": "نظام الكتب الرسمية — ثانوية نهج البلاغة الاهلية للبنين",
+  "short_name": "نهج البلاغة",
+  "description": "إصدار إنذارات الغياب والتعهدات والكتب الرسمية",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "scope": "./",
+  "id": "./index.html",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0e1530",
+  "theme_color": "#0e1530",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
