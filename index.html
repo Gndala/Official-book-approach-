@@ -439,6 +439,7 @@ main{max-width:1280px;width:100%;margin:0 auto;padding:22px 28px 60px}
 }
 </style>
 <style id="regcss">
+.page.lt-d14,.stage .page.lt-d14{background-image:url(d14.jpg)!important;background-size:100% 100%!important;background-repeat:no-repeat!important;background-color:#fbf8f1}
 .page.rg-g1,.stage .page.rg-g1{background-image:url(g1.jpg)!important;background-size:100% 100%!important;background-repeat:no-repeat!important;background-color:#fbf5e4}
 .page.rg-g2,.stage .page.rg-g2{background-image:url(g2.jpg)!important;background-size:100% 100%!important;background-repeat:no-repeat!important;background-color:#fbf5e4}
 .page.rg-g3,.stage .page.rg-g3{background-image:url(g3.jpg)!important;background-size:100% 100%!important;background-repeat:no-repeat!important;background-color:#fbf5e4}
@@ -639,7 +640,8 @@ main{max-width:1280px;width:100%;margin:0 auto;padding:22px 28px 60px}
           <label class="f wide">الجهة (إلى)<input id="g_to" list="toList" placeholder="مثال: مديرية التربية / الجامعة ..."></label>
           <label class="f">العدد<input id="g_no" placeholder="اتركه فارغاً للكتابة اليدوية"></label>
           <label class="f">التاريخ<input type="date" id="g_date"></label>
-          <label class="f wide">اسم الطالب<input id="g_name" placeholder="الاسم الرباعي"></label>
+          <label class="f wide">اسم الطالب / الطالبة<input id="g_name" placeholder="الاسم الرباعي"></label>
+          <label class="f">صيغة النص<select id="g_sex"><option value="m">طالب — مذكر</option><option value="f">طالبة — مؤنث</option></select></label>
           <label class="f">تاريخ الولادة<input type="date" id="g_dob"></label>
           <label class="f">الصف<select id="g_grade"><option>السادس العلمي</option><option>السادس الأدبي</option></select></label>
           <label class="f">العام الدراسي<select id="g_year"></select></label>
@@ -1472,7 +1474,7 @@ function frameImg(file){
   fr.onerror=rej;fr.readAsDataURL(file);
  });
 }
-const FR_LIST={slip:['d2','d7','d6','d3'],cont:['d1','d2','d3','d4','d5','d6','d7'],grad:['d8','d9','d10','d11','d12','d13']};
+const FR_LIST={slip:['d2','d7','d6','d3'],cont:['d1','d2','d3','d4','d5','d6','d7'],grad:['d8','d9','d10','d11','d12','d13','d14']};
 function renderFrameBox(sec){
  const box=$('#frbox-'+sec);if(!box)return;
  const f=store.frames[sec],has=!!FRIMG[sec],eff=frEff(sec,f.sel);
@@ -1512,8 +1514,9 @@ $('#s_school').addEventListener('input',()=>{if($('#s_enAuto').checked)$('#s_sch
 $('#s_enAuto').addEventListener('change',()=>{if($('#s_enAuto').checked)$('#s_schoolEn').value=enName($('#s_school').value)});
 
 /* ---------- letter designs registry + new letter sections ---------- */
-const LD_NAMES={"d1": "نهر البصرة — حجم الوصل (أفقي)", "d2": "الذهبي الأزرق — زخرفة كاملة", "d3": "الأزرق الفاتح — إطار مزخرف", "d4": "الأزرق الملكي — شريط ملتف", "d5": "الكحلي والذهبي — ورقة نباتية", "d6": "الكريمي — إطار أنيق", "d7": "الأمواج الزرقاء — بدون إطار جانبي", "d8": "الأزرق الذهبي — بإطار صورة", "d9": "الأمواج — بإطار صورة", "d10": "الإطار الأزرق — بإطار صورة", "d11": "الأخضر والأزرق — بإطار صورة", "d12": "الكحلي الذهبي — بإطار صورة", "d13": "الأزرق المزخرف — بإطار صورة", "custom": "إطار مستورد"};
+const LD_NAMES={"d1": "نهر البصرة — حجم الوصل (أفقي)", "d2": "الذهبي الأزرق — زخرفة كاملة", "d3": "الأزرق الفاتح — إطار مزخرف", "d4": "الأزرق الملكي — شريط ملتف", "d5": "الكحلي والذهبي — ورقة نباتية", "d6": "الكريمي — إطار أنيق", "d7": "الأمواج الزرقاء — بدون إطار جانبي", "d8": "الأزرق الذهبي — بإطار صورة", "d9": "الأمواج — بإطار صورة", "d10": "الإطار الأزرق — بإطار صورة", "d11": "الأخضر والأزرق — بإطار صورة", "d12": "الكحلي الذهبي — بإطار صورة", "d13": "الأزرق المزخرف — بإطار صورة", "d14": "الأزرق الفاتح — ثانوية البنات (بإطار صورة)", "custom": "إطار مستورد"};
 const LD={"d1": {"o": "l", "W": 794, "H": 561, "lc": "#12307f", "fs": 15, "dy0": 0, "bakedSub": true, "box": {"l": 100, "t": 282, "w": 594, "h": 196}, "meta": {"m": "b3", "no": {"cx": 88, "cy": 177}, "date": {"cx": 88, "cy": 199}}, "dir": {"m": "pill", "l": 58, "t": 492, "w": 190}, "by": null}, "d2": {"o": "p", "W": 794, "H": 1122, "lc": "#14284f", "fs": 18, "box": {"l": 80, "t": 326, "w": 634, "h": 574}, "meta": {"m": "b3", "no": {"cx": 630, "cy": 267}, "date": {"cy": 293, "dx": 637.6, "mx": 603.5, "yx": 551.6}}, "dir": {"m": "baked"}, "by": null}, "d3": {"o": "p", "W": 794, "H": 1122, "lc": "#14284f", "fs": 18, "box": {"l": 80, "t": 382, "w": 634, "h": 518}, "meta": {"m": "b3", "no": {"cx": 637, "cy": 317}, "date": {"cy": 349, "dx": 643.4, "mx": 609.2, "yx": 554.6}}, "dir": {"m": "baked"}, "by": null}, "d4": {"o": "p", "W": 794, "H": 1122, "lc": "#14284f", "fs": 18, "box": {"l": 80, "t": 438, "w": 634, "h": 462}, "meta": {"m": "b3", "no": {"cx": 634, "cy": 373}, "date": {"cy": 406, "dx": 637, "mx": 598.8, "yx": 542}}, "dir": {"m": "baked"}, "by": null}, "d5": {"o": "p", "W": 794, "H": 1122, "lc": "#14284f", "fs": 18, "box": {"l": 80, "t": 450, "w": 634, "h": 450}, "meta": {"m": "b3", "no": {"cx": 640, "cy": 388}, "date": {"cy": 417, "dx": 642.8, "mx": 608.9, "yx": 555}}, "dir": {"m": "baked"}, "by": null}, "d6": {"o": "p", "W": 794, "H": 1122, "lc": "#14284f", "fs": 18, "box": {"l": 80, "t": 362, "w": 634, "h": 538}, "meta": {"m": "b3", "no": {"cx": 645.9, "cy": 309.5}, "date": {"cy": 336, "dx": 638.8, "mx": 605.6, "yx": 553.5}}, "dir": {"m": "baked"}, "by": null}, "d7": {"o": "p", "W": 794, "H": 1122, "lc": "#14284f", "fs": 18, "box": {"l": 80, "t": 308, "w": 634, "h": 592}, "meta": {"m": "b3", "no": {"cx": 95, "cy": 257.5}, "date": {"cy": 281.5, "dx": 113, "mx": 84, "yx": 38}}, "dir": {"m": "baked"}, "by": null}, "d8": {"o": "p", "W": 794, "H": 1122, "lc": "#14284f", "fs": 18, "box": {"l": 80, "t": 352, "w": 634, "h": 548}, "meta": {"m": "b3", "no": {"cx": 631, "cy": 299}, "date": {"cy": 326.5, "dx": 637.6, "mx": 603.4, "yx": 549}}, "dir": {"m": "baked"}, "by": null, "ph": {"l": 64, "t": 282, "w": 153, "h": 200, "baked": 1}, "spP": {"w": 153, "h": 138}}, "d9": {"o": "p", "W": 794, "H": 1122, "lc": "#14284f", "fs": 18, "box": {"l": 80, "t": 312, "w": 634, "h": 588}, "meta": {"m": "b3", "no": {"cx": 672, "cy": 257.5}, "date": {"cy": 281.5, "dx": 679, "mx": 650.7, "yx": 601}}, "dir": {"m": "baked"}, "by": null, "ph": {"l": 56, "t": 251, "w": 136, "h": 169, "baked": 1}, "spP": {"w": 128, "h": 116}}, "d10": {"o": "p", "W": 794, "H": 1122, "lc": "#14284f", "fs": 18, "box": {"l": 80, "t": 308, "w": 634, "h": 592}, "meta": {"m": "b3", "no": {"cx": 650, "cy": 253}, "date": {"cy": 277.8, "dx": 668, "mx": 638.9, "yx": 589}}, "dir": {"m": "baked"}, "by": null, "ph": {"l": 62, "t": 238, "w": 138, "h": 185, "baked": 1}, "spP": {"w": 136, "h": 123}}, "d11": {"o": "p", "W": 794, "H": 1122, "lc": "#14284f", "fs": 18, "box": {"l": 80, "t": 330, "w": 634, "h": 570}, "meta": {"m": "b3", "no": {"cx": 650, "cy": 266.5}, "date": {"cy": 289, "dx": 660.5, "mx": 634.3, "yx": 587.5}}, "dir": {"m": "baked"}, "by": null, "ph": {"l": 63, "t": 242, "w": 136, "h": 166, "baked": 1}, "spP": {"w": 135, "h": 86}}, "d12": {"o": "p", "W": 794, "H": 1122, "lc": "#14284f", "fs": 18, "box": {"l": 80, "t": 332, "w": 634, "h": 568}, "meta": {"m": "b3", "no": {"cx": 657, "cy": 270}, "date": {"cy": 297, "dx": 665.8, "mx": 636.8, "yx": 589}}, "dir": {"m": "baked"}, "by": null, "ph": {"l": 63, "t": 246, "w": 138, "h": 177, "baked": 1}, "spP": {"w": 137, "h": 99}}, "d13": {"o": "p", "W": 794, "H": 1122, "lc": "#14284f", "fs": 18, "box": {"l": 80, "t": 326, "w": 634, "h": 574}, "meta": {"m": "b3", "no": {"cx": 631, "cy": 264}, "date": {"cy": 289, "dx": 635.9, "mx": 602.9, "yx": 553}}, "dir": {"m": "baked"}, "by": null, "ph": {"l": 66, "t": 247, "w": 136, "h": 167, "baked": 1}, "spP": {"w": 138, "h": 96}}};
+LD.d14={"o":"p","W":794,"H":1122,"lc":"#14284f","fs":18,"box":{"l":80,"t":316,"w":634,"h":614},"meta":{"m":"b3","no":{"cx":640,"cy":266.6},"date":{"cy":291.5,"dx":647.7,"mx":622.3,"yx":574.3}},"ph":{"l":60,"t":238,"w":134,"h":166,"baked":1},"spP":{"w":130,"h":96},"dir":{"m":"txt","l":92,"t":1031,"w":178,"h":52,"label":"مديرة المدرسة"},"by":null};
 LD.cP=Object.assign({},LD.d2,{lc:'#14284f'});
 LD.cL={o:'l',W:794,H:561,lc:'#14284f',fs:15,box:{l:70,t:176,w:654,h:296},meta:{m:'draw',l:70,t:136,w:170},dir:{m:'ln',l:70,t:478,w:200},by:null};
 const FRORI={};['sit','stu','stp','med','oth'].forEach(k=>{FRORI[k]=LS.get('nahj.frameori.'+k,'p')});
@@ -1546,13 +1549,14 @@ function letterHTML(o){
  if(d.m==='pill')h+='<div class="lt-dir lt-pill" style="left:'+d.l+'px;top:'+d.t+'px;width:'+d.w+'px;font-size:15px">'+esc(o.director)+'</div>';
  else if(d.m==='ln')h+='<div class="lt-dir" style="left:'+d.l+'px;top:'+d.t+'px;width:'+d.w+'px"><div style="font-size:16px">مدير المدرسة</div><div style="margin-top:6px;font-size:17px">'+esc(o.director)+'</div></div>';
  else if(d.m==='on')h+='<div class="lt-dir" style="left:'+d.l+'px;top:'+d.t+'px;width:'+d.w+'px;font-size:16px">'+esc(o.director)+'</div>';
+  else if(d.m==='txt')h+='<div class="lt-dir" style="left:'+d.l+'px;top:'+d.t+'px;width:'+d.w+'px;height:'+d.h+'px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.3"><div style="font-size:11px;opacity:.85">'+esc(d.label||'مدير المدرسة')+'</div><div style="font-size:14.5px;font-weight:800">'+esc(o.director)+'</div></div>';
   h+='</div>';
  return h;
 }
 const LCFG={
  sit:{title:'بيانات واقع الحال',sub:'واقع حال',subject:'م / واقع حال',photo:false,rows:true,sit:true,compat:['d2','d3','d4','d5','d6','d7'],def:'d2'},
  stu:{title:'بيانات تأييد استمرارية الطالب',sub:'تأييد استمرارية طالب',subject:'م / تأييد استمرارية',photo:false,rows:false,compat:['d1','d2','d3','d4','d5','d6','d7'],def:'d1'},
- stp:{title:'بيانات تأييد استمرارية الطالب بصورة',sub:'تأييد استمرارية طالب بصورة',subject:'م / تأييد استمرارية',photo:true,rows:false,compat:['d8','d9','d10','d11','d12','d13'],def:'d8'},
+ stp:{title:'بيانات تأييد استمرارية الطالب بصورة',sub:'تأييد استمرارية طالب بصورة',subject:'م / تأييد استمرارية',photo:true,rows:false,compat:['d8','d9','d10','d11','d12','d13','d14'],def:'d8'},
  med:{title:'بيانات تأييد الفحص الطبي',sub:'تأييد فحص طبي',subject:'م / تأييد للفحص الطبي',photo:false,rows:false,med:true,compat:['d2','d3','d4','d5','d6','d7'],def:'d2'}
 };
 const PARA={
@@ -2211,7 +2215,7 @@ function renderMarkInputs(){
 function gradRec(){
  const g=$('#g_grade').value,sj=GSUBJ[g],marks={};
  sj.r.concat(sj.l).forEach(n=>{marks[n]=G.marks[n]||''});
- return {kind:'grad',tpl:'grad',id:G.editId||uid(),to:$('#g_to').value.trim(),no:$('#g_no').value.trim(),date:$('#g_date').value,name:$('#g_name').value.trim(),dob:$('#g_dob').value,grade:g,year:$('#g_year').value,exam:toEn($('#g_exam').value.trim()),res:$('#g_res').value,round:$('#g_round').value,photo:G.photo,marks,avg:$('#g_avg').value.trim(),fs:{txt:+$('#g_fst').value||15.5,tbl:+$('#g_fsb').value||100},frame:store.frames.grad.sel,nameOn:!!store.frames.grad.nameOn,snap:{director:store.settings.director,digits:store.settings.digits,school:store.settings.school,schoolEn:store.settings.schoolEn},created:Date.now()};
+ return {kind:'grad',tpl:'grad',id:G.editId||uid(),to:$('#g_to').value.trim(),no:$('#g_no').value.trim(),date:$('#g_date').value,name:$('#g_name').value.trim(),sex:$('#g_sex').value,dob:$('#g_dob').value,grade:g,year:$('#g_year').value,exam:toEn($('#g_exam').value.trim()),res:$('#g_res').value,round:$('#g_round').value,photo:G.photo,marks,avg:$('#g_avg').value.trim(),fs:{txt:+$('#g_fst').value||15.5,tbl:+$('#g_fsb').value||100},frame:store.frames.grad.sel,nameOn:!!store.frames.grad.nameOn,snap:{director:store.settings.director,digits:store.settings.digits,school:store.settings.school,schoolEn:store.settings.schoolEn},created:Date.now()};
 }
 function numWords(n){
  n=Math.floor(n);if(n===0)return 'صفر';
@@ -2232,6 +2236,10 @@ function markWords(v){
  if(parts[1]){const z=(parts[1].match(/^0*/)||[''])[0].length,f=parseInt(parts[1],10)||0;w+=' فاصلة '+(z?'صفر '.repeat(z):'')+(f?numWords(f):'')}
  return w.trim();
 }
+function gradParaHTML(rec,val){
+ const f=rec.sex==='f',x=(m,fm)=>f?fm:m;
+ return 'نؤيد لكم بأن '+x('الطالب','الطالبة')+' ('+val(rec.name,170)+') الملصقة '+x('صورته','صورتها')+' أعلاه، '+x('المولود','المولودة')+' بتاريخ ('+val(rec.dob?fmtDate(rec.dob):'',90,true)+')، '+x('أحد طلاب','إحدى طالبات')+' مدرستنا في الصف ('+val(rec.grade,90)+') للعام الدراسي ('+val(rec.year,90,true)+')، '+x('دخل','دخلت')+' الامتحان الوزاري ورقمه الامتحاني ('+val(rec.exam,90,true)+')، وكانت '+x('نتيجته','نتيجتها')+' ('+val(rec.res,50)+') في الدور ('+val(rec.round,50)+')، '+x('وحاز','وحازت')+' على الدرجات المدرجة أدناه، وبناءً على '+x('طلبه','طلبها')+' '+x('زُوِّد','زُوِّدت')+' بهذا التأييد.';
+}
 function gradPageHTML(rec){
  const sn=rec.snap||{director:store.settings.director,digits:store.settings.digits},D=s=>dig(s,sn.digits);
  const fs=rec.fs||{txt:15.5,tbl:100},fe=frEff('grad',rec.frame);
@@ -2248,7 +2256,7 @@ function gradPageHTML(rec){
  const gboxH='<div class="g-box" style="position:static;width:auto;height:auto;margin-top:6px;--tf:'+(fs.tbl/100)+'"><div class="g-bt">الدرجات</div><div class="g-tbls">'+tbl(sj.r.map(mk).join(''))+tbl(sj.l.map(mk).join('')+av)+'</div>'+totHtml+'<div class="g-sum '+(ok?'ok':'no')+'">النتيجة: <b>'+esc(rec.res)+'</b> — الدور <b>'+esc(rec.round)+'</b></div></div>';
  if(/^d\d+$/.test(fe)){
   const M=LD[fe];
-  return letterHTML({d:fe,sec:'grad',M,D,fs:fs.txt,no:rec.no,date:rec.date,photo:rec.photo||'',photoOn:true,toHTML:'<span class="hl">إلى /</span> '+val(rec.to,230),subjectHTML:'<span class="hl">الموضوع /</span> <b>تأييد تخرج</b>',greet:'تحية طيبة...',para:'نؤيد لكم بأن الطالب ('+val(rec.name,170)+') الملصقة صورته أعلاه، المولود بتاريخ ('+val(rec.dob?fmtDate(rec.dob):'',90,true)+')، أحد طلاب مدرستنا في الصف ('+val(rec.grade,90)+') للعام الدراسي ('+val(rec.year,90,true)+')، دخل الامتحان الوزاري ورقمه الامتحاني ('+val(rec.exam,90,true)+')، وكانت نتيجته ('+val(rec.res,50)+') في الدور ('+val(rec.round,50)+')، وحاز على الدرجات المدرجة أدناه، وبناءً على طلبه زُوِّد بهذا التأييد.',extra:gboxH,closing:'',director:sn.director});
+  return letterHTML({d:fe,sec:'grad',M,D,fs:fs.txt,no:rec.no,date:rec.date,photo:rec.photo||'',photoOn:true,toHTML:'<span class="hl">إلى /</span> '+val(rec.to,230),subjectHTML:'<span class="hl">الموضوع /</span> <b>تأييد تخرج</b>',greet:'تحية طيبة...',para:gradParaHTML(rec,val),extra:gboxH,closing:'',director:sn.director});
  }
  return '<div class="page t-grad'+frClass('grad',fe)+'">'+(fe==='default'?gradDefName(sn):(rec.nameOn?nameOverlay('navy',sn):''))+
   '<div class="g-no">'+D(esc(rec.no||''))+'</div><div class="g-dt">'+(rec.date?D(fmtDate(rec.date)):'')+'</div>'+
@@ -2257,7 +2265,7 @@ function gradPageHTML(rec){
    '<div class="hc"><div><span class="hl">إلى /</span> '+val(rec.to,230)+'</div>'+
    '<div><span class="hl">الموضوع /</span> <b>تأييد تخرج</b></div></div>'+
    '<div><span class="hl">تحية طيبة...</span></div>'+
-   '<div class="para">نؤيد لكم بأن الطالب ('+val(rec.name,170)+') الملصقة صورته أعلاه، المولود بتاريخ ('+val(rec.dob?fmtDate(rec.dob):'',90,true)+')، أحد طلاب مدرستنا في الصف ('+val(rec.grade,90)+') للعام الدراسي ('+val(rec.year,90,true)+')، دخل الامتحان الوزاري ورقمه الامتحاني ('+val(rec.exam,90,true)+')، وكانت نتيجته ('+val(rec.res,50)+') في الدور ('+val(rec.round,50)+')، وحاز على الدرجات المدرجة أدناه، وبناءً على طلبه زُوِّد بهذا التأييد.</div></div>'+
+   '<div class="para">'+gradParaHTML(rec,val)+'</div></div>'+
   '<div class="g-box" style="--tf:'+(fs.tbl/100)+'"><div class="g-bt">الدرجات</div><div class="g-tbls">'+tbl(sj.r.map(mk).join(''))+tbl(sj.l.map(mk).join('')+av)+'</div>'+totHtml+
    '<div class="g-sum '+(ok?'ok':'no')+'">النتيجة: <b>'+esc(rec.res)+'</b> — الدور <b>'+esc(rec.round)+'</b></div></div>'+
   '<div class="g-dir">'+esc(sn.director)+'</div></div>';
@@ -2331,10 +2339,12 @@ function clearGrad(){
  fillYears();renderMarkInputs();renderGradPreview();
 }
 $('#gNew').onclick=clearGrad;
+$('#g_sex').value=LS.get('nahj.gsex','m');
+$('#g_sex').addEventListener('change',()=>{LS.set('nahj.gsex',$('#g_sex').value);renderGradPreview()});
 function loadGrad(r){
  G.editId=r.id;G.photo=r.photo||'';G.marks=Object.assign({},r.marks||{});
  store.frames.grad.sel=r.frame||'default';store.frames.grad.nameOn=!!r.nameOn;saveFrames();renderFrameBox('grad');
- $('#g_to').value=r.to||'';$('#g_no').value=r.no||'';$('#g_date').value=r.date||todayISO();$('#g_name').value=r.name||'';$('#g_dob').value=r.dob||'';
+ $('#g_to').value=r.to||'';$('#g_no').value=r.no||'';$('#g_date').value=r.date||todayISO();$('#g_name').value=r.name||'';$('#g_sex').value=r.sex||'m';$('#g_dob').value=r.dob||'';
  $('#g_grade').value=r.grade;$('#g_exam').value=r.exam||'';$('#g_res').value=r.res;$('#g_round').value=r.round;$('#g_avg').value=r.avg||'';$('#g_fst').value=(r.fs&&r.fs.txt)||15.5;$('#g_fsb').value=(r.fs&&r.fs.tbl)||100;
  fillYears();if([...$('#g_year').options].some(o=>o.value===r.year))$('#g_year').value=r.year;
  renderMarkInputs();renderGradPreview();window.scrollTo(0,0);toast('تم تحميل التأييد للتعديل');

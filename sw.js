@@ -1,5 +1,5 @@
 /* Service Worker — يخزّن التطبيق والمكتبات والخطوط للعمل بدون إنترنت */
-const VERSION = 'v2';
+const VERSION = 'v3';
 const CORE = `nahj-core-${VERSION}`;
 const RUNTIME = `nahj-runtime-${VERSION}`;
 
@@ -29,6 +29,7 @@ const IMG_FILES = [
   './d11.jpg',
   './d12.jpg',
   './d13.jpg',
+  './d14.jpg',
   './g1.jpg',
   './g2.jpg',
   './g3.jpg',
